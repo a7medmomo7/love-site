@@ -7,57 +7,55 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background-image: url("bg.jpg");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Cairo', sans-serif;
+body{
+  margin:0;
+  min-height:100vh;
+  background:url("bg.jpg") center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Cairo',sans-serif;
 }
 
-.box {
-  background: rgba(0,0,0,0.55);
-  color: white;
-  padding: 25px;
-  border-radius: 18px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  animation: fade 1.2s ease;
+.box{
+  background:rgba(0,0,0,0.55);
+  color:white;
+  padding:25px;
+  border-radius:18px;
+  width:90%;
+  max-width:520px;
+  text-align:center;
+  animation:fade 1.2s ease;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  font-size: 16px;
-  margin-top: 15px;
+input{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  font-size:16px;
+  margin-top:15px;
 }
 
-button {
-  margin-top: 15px;
-  padding: 10px 25px;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
+button{
+  margin-top:15px;
+  padding:10px 25px;
+  border-radius:25px;
+  border:none;
+  cursor:pointer;
+  font-size:15px;
 }
 
-video {
-  width: 100%;
-  margin-top: 15px;
-  border-radius: 14px;
-  display: none;
+video{
+  width:100%;
+  margin-top:15px;
+  border-radius:14px;
+  display:none;
 }
 
-@keyframes fade {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
 }
 </style>
 </head>
@@ -91,21 +89,21 @@ video {
 <button onclick="playSound()">▶ Play Sound</button>
 
 <button onclick="playVideo('v1')">▶ Play Video 1</button>
-<video id="v1" src="video1.mp4" controls></video>
+<video id="v1" src="video1.mp4" controls muted></video>
 
 <button onclick="playVideo('v2')">▶ Play Video 2</button>
-<video id="v2" src="video2.mp4" controls></video>
+<video id="v2" src="video2.mp4" controls muted></video>
 
-<audio id="sound" src="sound.mp4"></audio>
+<audio id="sound" src="sound.mp4" muted></audio>
 
 </div>
 
 <script>
 function login(){
-  if(document.getElementById("pass").value === "7122021"){
+  if(document.getElementById("pass").value==="7122021"){
     document.getElementById("login").style.display="none";
     document.getElementById("content").style.display="block";
-  } else {
+  }else{
     alert("الباسورد غلط");
   }
 }
@@ -121,6 +119,7 @@ function stopAll(){
 function playSound(){
   stopAll();
   let s=document.getElementById("sound");
+  s.muted=false;
   s.currentTime=0;
   s.play();
 }
@@ -129,6 +128,7 @@ function playVideo(id){
   stopAll();
   let v=document.getElementById(id);
   v.style.display="block";
+  v.muted=false;
   v.currentTime=0;
   v.play();
 }
